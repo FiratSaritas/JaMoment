@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+<div><b>JaMoment</b></div>
+<nav>
+<a href="index.html">Home</a>
+<a href="pakete.html">Pakete</a>
+<a href="galerie.html">Galerie</a>
+<a href="kontakt.html">Kontakt</a>
+</nav>
+</header>
+
+<div class="container">
+<h1>Antrag planen & Anfrage senden</h1>
+
+<p>
+Wähle zuerst ein <b>Paket</b> als Basis. Danach kannst du optionale Services hinzufügen.
+Alle Preise sind transparent als <b>„ab Preise“</b> angegeben und können je nach Aufwand variieren.
+</p>
+
+<form oninput="calcTotal()">
+
+<label><b>1. Paket auswählen (Basis)</b></label>
+<select id="p">
+<option value="490">Zuhause Antrag – ab CHF 490</option>
+<option value="790">Hotel Antrag – ab CHF 790</option>
+<option value="990">Outdoor Antrag – ab CHF 990</option>
+<option value="1290">Rooftop Antrag – ab CHF 1290</option>
+<option value="1490">Luxus Proposal – ab CHF 1490</option>
+<option value="690">Last Minute Antrag – ab CHF 690</option>
+</select>
+
+<label><b>2. Lieferung & Aufbau</b></label>
+<select id="l">
+<option value="0">Selbst abholen – CHF 0</option>
+<option value="120" title="Anfahrt + Aufbau (ca. 1–2 Stunden je nach Ort)">Lieferung & Aufbau – ab CHF 120 *</option>
+<option value="180" title="Längere Anfahrt / spezielle Location">Lieferung erweitert – ab CHF 180 *</option>
+</select>
+
+<label><b>3. Fotograf (optional)</b></label>
+<select id="f">
+<option value="0">Kein Fotograf</option>
+<option value="350" title="ca. 1 Stunde Begleitung + bearbeitete Bilder">Fotograf Basic – ab CHF 350 *</option>
+<option value="550" title="ca. 2 Stunden + mehr Bilder + Nachbearbeitung">Fotograf Premium – ab CHF 550 *</option>
+</select>
+
+<label><b>4. Videograf (optional)</b></label>
+<select id="v">
+<option value="0">Kein Video</option>
+<option value="600" title="Highlight Video inkl. versteckte Aufnahme">Video Basic – ab CHF 600 *</option>
+<option value="900" title="Professionelles Video + Schnitt + Musik">Video Premium – ab CHF 900 *</option>
+</select>
+
+<label><b>5. Zusatzinfos (optional)</b></label>
+<textarea placeholder="Datum, Ort, spezielle Wünsche oder Ideen..."></textarea>
+
+<label><b>Deine Kontaktdaten</b></label>
+<input placeholder="Name" required>
+<input placeholder="E-Mail" required>
+
+<div class="total" id="total">Total: ab CHF 490</div>
+
+<p style="font-size:12px;color:#777;">
+* Preise sind Richtwerte und können je nach Dauer, Aufwand, Ort oder individuellen Wünschen variieren.
+</p>
+
+<button type="button" class="btn" onclick="sendMail()">Anfrage senden</button>
+
+</form>
+</div>
+
+<script>
+function calcTotal(){
+let total = +p.value + +l.value + +f.value + +v.value;
+document.getElementById('total').innerText = 'Total: ab CHF ' + total;
+}
+
+function sendMail(){
+let body = `Anfrage Heiratsantrag%0D%0A
+Paket: ${p.options[p.selectedIndex].text}%0D%0A
+Lieferung: ${l.options[l.selectedIndex].text}%0D%0A
+Fotograf: ${f.options[f.selectedIndex].text}%0D%0A
+Video: ${v.options[v.selectedIndex].text}%0D%0A
+${document.getElementById('total').innerText}`;
+
+window.location.href = 'mailto:info@jamoment.ch?subject=Anfrage Heiratsantrag&body=' + body;
+}
+</script>
+
+</body>
+</html>
