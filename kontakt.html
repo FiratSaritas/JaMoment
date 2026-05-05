@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kontakt</title>
 <link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -26,38 +27,55 @@ Wähle zuerst ein <b>Paket</b> als Basis. Danach kannst du optionale Services hi
 Alle Preise sind transparent als <b>„ab Preise“</b> angegeben und können je nach Aufwand variieren.
 </p>
 
-<form oninput="calcTotal()">
+<form oninput="calcTotal(); updateImage();">
 
 <label><b>1. Paket auswählen (Basis)</b></label>
 <select id="p">
-<option value="490">Zuhause Antrag – ab CHF 490</option>
-<option value="790">Hotel Antrag – ab CHF 790</option>
-<option value="990">Outdoor Antrag – ab CHF 990</option>
-<option value="1290">Rooftop Antrag – ab CHF 1290</option>
-<option value="1490">Luxus Proposal – ab CHF 1490</option>
-<option value="690">Last Minute Antrag – ab CHF 690</option>
+<option value="490" data-img="https://images.unsplash.com/photo-1520854221256-17451cc331bf">Zuhause Antrag – ab CHF 490</option>
+<option value="790" data-img="https://images.unsplash.com/photo-1519225421980-715cb0215aed">Hotel Antrag – ab CHF 790</option>
+<option value="990" data-img="https://images.unsplash.com/photo-1522673607200-164d1b6ce486">Outdoor Antrag – ab CHF 990</option>
+<option value="1290" data-img="https://images.unsplash.com/photo-1492724441997-5dc865305da7">Rooftop Antrag – ab CHF 1290</option>
+<option value="1490" data-img="https://images.unsplash.com/photo-1529636798458-92182e662485">Luxus Proposal – ab CHF 1490</option>
+<option value="690" data-img="https://images.unsplash.com/photo-1511285560929-80b456fea0bc">Last Minute Antrag – ab CHF 690</option>
 </select>
+
+<!-- IMAGE PREVIEW -->
+<img id="preview" 
+src="https://images.unsplash.com/photo-1520854221256-17451cc331bf" 
+style="width:120px;height:80px;object-fit:cover;border-radius:8px;margin:10px 0;opacity:0.9;">
 
 <label><b>2. Lieferung & Aufbau</b></label>
 <select id="l">
 <option value="0">Selbst abholen – CHF 0</option>
-<option value="120" title="Anfahrt + Aufbau (ca. 1–2 Stunden je nach Ort)">Lieferung & Aufbau – ab CHF 120 *</option>
-<option value="180" title="Längere Anfahrt / spezielle Location">Lieferung erweitert – ab CHF 180 *</option>
+<option value="120">Lieferung & Aufbau – ab CHF 120 *</option>
+<option value="180">Lieferung erweitert – ab CHF 180 *</option>
 </select>
 
 <label><b>3. Fotograf (optional)</b></label>
 <select id="f">
 <option value="0">Kein Fotograf</option>
-<option value="350" title="ca. 1 Stunde Begleitung + bearbeitete Bilder">Fotograf Basic – ab CHF 350 *</option>
-<option value="550" title="ca. 2 Stunden + mehr Bilder + Nachbearbeitung">Fotograf Premium – ab CHF 550 *</option>
+<option value="350">Fotograf Basic – ab CHF 350 *</option>
+<option value="550">Fotograf Premium – ab CHF 550 *</option>
 </select>
 
 <label><b>4. Videograf (optional)</b></label>
 <select id="v">
 <option value="0">Kein Video</option>
-<option value="600" title="Highlight Video inkl. versteckte Aufnahme">Video Basic – ab CHF 600 *</option>
-<option value="900" title="Professionelles Video + Schnitt + Musik">Video Premium – ab CHF 900 *</option>
+<option value="600">Video Basic – ab CHF 600 *</option>
+<option value="900">Video Premium – ab CHF 900 *</option>
 </select>
+
+<label><b>5. Express Antrag (optional)</b></label>
+
+<div style="border:1px solid #eee;padding:15px;border-radius:12px;background:#fff;">
+<label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+<input type="checkbox" id="e" value="500" onchange="calcTotal()">
+<span>
+<b>Express Antrag – + CHF 500</b><br>
+<small>Planung & Umsetzung innerhalb von 24 Stunden. Perfekt für spontane, dringende Anträge.</small>
+</span>
+</label>
+</div>
 
 <label><b>5. Zusatzinfos (optional)</b></label>
 <textarea placeholder="Datum, Ort, spezielle Wünsche oder Ideen..."></textarea>
@@ -65,22 +83,42 @@ Alle Preise sind transparent als <b>„ab Preise“</b> angegeben und können je
 <label><b>Deine Kontaktdaten</b></label>
 <input placeholder="Name" required>
 <input placeholder="E-Mail" required>
+<input placeholder="Telefonnummer" required>
 
 <div class="total" id="total">Total: ab CHF 490</div>
 
-<p style="font-size:12px;color:#777;">
-* Preise sind Richtwerte und können je nach Dauer, Aufwand, Ort oder individuellen Wünschen variieren.
-</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+<button type="button" class="btn" onclick="sendWhatsApp()">
+WhatsApp Anfrage
+</button>
 
-<button type="button" class="btn" onclick="sendMail()">Anfrage senden</button>
+<button type="button" class="btn" style="background:#555;" onclick="sendMail()">
+Per E-Mail senden
+</button>
+
 
 </form>
 </div>
 
 <script>
 function calcTotal(){
-let total = +p.value + +l.value + +f.value + +v.value;
+
+let pVal = Number(document.getElementById("p").value);
+let lVal = Number(document.getElementById("l").value);
+let fVal = Number(document.getElementById("f").value);
+let vVal = Number(document.getElementById("v").value);
+
+// FIX: checkbox must be checked, NOT value
+let express = document.getElementById("e").checked ? 500 : 0;
+
+let total = pVal + lVal + fVal + vVal + express;
+
 document.getElementById('total').innerText = 'Total: ab CHF ' + total;
+}
+
+function updateImage(){
+let img = p.options[p.selectedIndex].getAttribute("data-img");
+document.getElementById("preview").src = img;
 }
 
 function sendMail(){
@@ -89,6 +127,58 @@ Paket: ${p.options[p.selectedIndex].text}%0D%0A
 Lieferung: ${l.options[l.selectedIndex].text}%0D%0A
 Fotograf: ${f.options[f.selectedIndex].text}%0D%0A
 Video: ${v.options[v.selectedIndex].text}%0D%0A
+${document.getElementById('total').innerText}`;
+
+window.location.href = 'mailto:info@jamoment.ch?subject=Anfrage Heiratsantrag&body=' + body;
+}
+
+function updateImage(){
+let img = p.options[p.selectedIndex].getAttribute("data-img");
+document.getElementById("preview").src = img;
+}
+
+// AUTO SELECT PACKAGE FROM URL
+window.onload = function(){
+const params = new URLSearchParams(window.location.search);
+const paket = params.get("paket");
+
+if(paket){
+for(let i=0;i<p.options.length;i++){
+if(p.options[i].value === paket){
+p.selectedIndex = i;
+updateImage();
+calcTotal();
+}
+}
+}
+}
+
+// WHATSAPP SEND
+function sendWhatsApp(){
+
+let expressText = document.getElementById("e").checked ? "Ja (+CHF 500)" : "Nein";
+
+let text = `Anfrage Heiratsantrag\n
+Paket: ${p.options[p.selectedIndex].text}
+Lieferung: ${l.options[l.selectedIndex].text}
+Fotograf: ${f.options[f.selectedIndex].text}
+Video: ${v.options[v.selectedIndex].text}
+Express: ${expressText}
+${document.getElementById('total').innerText}`;
+
+let phone = "41790000000";
+window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+}
+function sendMail(){
+
+let expressText = document.getElementById("e").checked ? "Ja (+CHF 500)" : "Nein";
+
+let body = `Anfrage Heiratsantrag%0D%0A
+Paket: ${p.options[p.selectedIndex].text}%0D%0A
+Lieferung: ${l.options[l.selectedIndex].text}%0D%0A
+Fotograf: ${f.options[f.selectedIndex].text}%0D%0A
+Video: ${v.options[v.selectedIndex].text}%0D%0A
+Express: ${expressText}%0D%0A
 ${document.getElementById('total').innerText}`;
 
 window.location.href = 'mailto:info@jamoment.ch?subject=Anfrage Heiratsantrag&body=' + body;
