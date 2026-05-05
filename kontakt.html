@@ -47,22 +47,22 @@ style="width:120px;height:80px;object-fit:cover;border-radius:8px;margin:10px 0;
 <label><b>2. Lieferung & Aufbau</b></label>
 <select id="l">
 <option value="0">Selbst abholen – CHF 0</option>
-<option value="120">Lieferung & Aufbau – ab CHF 120 *</option>
-<option value="180">Lieferung erweitert – ab CHF 180 *</option>
+<option value="120" title="Anfahrt + Aufbau (ca. 1–2 Stunden je nach Ort)">Lieferung & Aufbau – ab CHF 120 *</option>
+<option value="180" title="Längere Anfahrt / spezielle Location">Lieferung erweitert – ab CHF 180 *</option>
 </select>
 
 <label><b>3. Fotograf (optional)</b></label>
 <select id="f">
 <option value="0">Kein Fotograf</option>
-<option value="350">Fotograf Basic – ab CHF 350 *</option>
-<option value="550">Fotograf Premium – ab CHF 550 *</option>
+<option value="350" title="ca. 1 Stunde Begleitung + bearbeitete Bilder">Fotograf Basic – ab CHF 350 *</option>
+<option value="550" title="ca. 2 Stunden + mehr Bilder + Nachbearbeitung">Fotograf Premium – ab CHF 550 *</option>
 </select>
 
 <label><b>4. Videograf (optional)</b></label>
 <select id="v">
 <option value="0">Kein Video</option>
-<option value="600">Video Basic – ab CHF 600 *</option>
-<option value="900">Video Premium – ab CHF 900 *</option>
+<option value="600" title="Highlight Video inkl. versteckte Aufnahme">Video Basic – ab CHF 600 *</option>
+<option value="900" title="Professionelles Video + Schnitt + Musik">Video Premium – ab CHF 900 *</option>
 </select>
 
 <label><b>5. Express Antrag (optional)</b></label>
@@ -86,6 +86,11 @@ style="width:120px;height:80px;object-fit:cover;border-radius:8px;margin:10px 0;
 <input placeholder="Telefonnummer" required>
 
 <div class="total" id="total">Total: ab CHF 490</div>
+
+<p style="font-size:12px;color:#777;">
+* Preise sind Richtwerte und können je nach Dauer, Aufwand, Ort oder individuellen Wünschen variieren.
+</p>
+
 
 <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
 <button type="button" class="btn" onclick="sendWhatsApp()">
@@ -187,3 +192,5 @@ window.location.href = 'mailto:info@jamoment.ch?subject=Anfrage Heiratsantrag&bo
 
 </body>
 </html>
+
+
