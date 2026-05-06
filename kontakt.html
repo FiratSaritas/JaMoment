@@ -46,9 +46,19 @@ Alle Preise sind transparent als <b>„ab Preise“</b> angegeben und können je
 </select>
 
 <!-- IMAGE PREVIEW -->
-<img id="preview" 
-src="https://images.unsplash.com/photo-1520854221256-17451cc331bf" 
-style="width:120px;height:80px;object-fit:cover;border-radius:8px;margin:10px 0;opacity:0.9;">
+<div id="packagePreview" style="display:flex;gap:15px;align-items:flex-start;margin:15px 0;">
+
+  <img id="previewImg"
+  src="https://images.unsplash.com/photo-1520854221256-17451cc331bf"
+  style="width:120px;height:100px;object-fit:cover;border-radius:8px;">
+
+  <ul id="previewList" style="font-size:14px;margin:0;padding-left:15px;">
+    <li>LED Schriftzug</li>
+    <li>Kerzen & Rosen</li>
+    <li>Aufbau & Abbau</li>
+  </ul>
+
+</div>
 
 <label><b>2. Lieferung & Aufbau</b></label>
 <select id="l">
@@ -147,8 +157,34 @@ window.location.href = 'mailto:info@jamoment.ch?subject=Anfrage Heiratsantrag&bo
 }
 
 function updateImage(){
-let img = p.options[p.selectedIndex].getAttribute("data-img");
-document.getElementById("preview").src = img;
+
+let selected = p.options[p.selectedIndex];
+
+// Bild
+let img = selected.getAttribute("data-img");
+document.getElementById("previewImg").src = img;
+
+// Inhalte
+let lists = {
+  490: ["LED Schriftzug","Kerzen & Rosen","Aufbau & Abbau"],
+  790: ["Premium Deko","Überraschung","Optional Fotograf"],
+  990: ["Picknick Setup","Lichter","Location Planung"],
+  1290: ["Exklusive Location","Kerzen Setup","Privatsphäre"],
+  1490: ["High-End Setup","Blumenbogen","Fotograf inkl."],
+  690: ["Schnelle Umsetzung","Standard Setup","Kurzfristig möglich"]
+};
+
+let val = selected.value;
+let ul = document.getElementById("previewList");
+
+ul.innerHTML = "";
+
+lists[val].forEach(item => {
+  let li = document.createElement("li");
+  li.textContent = item;
+  ul.appendChild(li);
+});
+
 }
 
 // AUTO SELECT PACKAGE FROM URL
@@ -200,6 +236,43 @@ ${document.getElementById('total').innerText}`;
 window.location.href = 'mailto:info@jamoment.ch?subject=Anfrage Heiratsantrag&body=' + body;
 }
 </script>
+<footer class="footer">
+
+  <div class="footer-grid">
+
+    <div>
+      <h3>JaMoment</h3>
+      <p>Exklusive Heiratsanträge in der Schweiz</p>
+    </div>
+
+    <div>
+      <h4>Kontakt</h4>
+      <p>info@jamoment.ch</p>
+      <p>+41 79 000 00 00</p>
+    </div>
+
+    <div>
+      <h4>Standort</h4>
+      <p>Zürich, Schweiz</p>
+      <p>Schweizweit verfügbar</p>
+    </div>
+
+    <div>
+      <h4>Navigation</h4>
+      <p><a href="pakete.html">Pakete</a></p>
+      <p><a href="galerie.html">Galerie</a></p>
+      <p><a href="ablauf.html">Ablauf</a></p>
+      <p><a href="kontakt.html">Kontakt</a></p>
+      <p><a href="ueber-uns.html">Über uns</a></p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 JaMoment
+  </div>
+
+</footer>
 
 </body>
 </html>

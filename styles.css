@@ -226,3 +226,58 @@ header img:hover {
   }
 
 }
+
+.sticky-btn {
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #C8A96A;
+  color: white;
+  padding: 14px 25px;
+  border-radius: 30px;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+
+/* nur auf mobile anzeigen */
+@media (min-width: 768px) {
+  .sticky-btn {
+    display: none;
+  }
+}
+.footer {
+  background: #111;
+  color: #eee;
+  padding: 40px 20px 20px;
+  margin-top: 60px;
+}
+
+.footer-grid {
+  display: grid;
+  gap: 30px;
+}
+
+.footer h3, .footer h4 {
+  margin-bottom: 10px;
+}
+
+.footer a {
+  color: #C8A96A;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #777;
+}
+
+@media(min-width:768px){
+  .footer-grid {
+    grid-template-columns: repeat(4,1fr);
+  }
+}
