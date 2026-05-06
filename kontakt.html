@@ -6,17 +6,23 @@
 <title>Kontakt</title>
 <link rel="stylesheet" href="styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 
-<header>
-<div><b>JaMoment</b></div>
-<nav>
-<a href="index.html">Home</a>
-<a href="pakete.html">Pakete</a>
-<a href="galerie.html">Galerie</a>
-<a href="kontakt.html">Kontakt</a>
-</nav>
+<header class="header">
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="Logo">
+  </a>
+
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="pakete.html">Pakete</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="ablauf.html">Ablauf</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="ueber-uns.html">Über uns</a>
+  </nav>
 </header>
 
 <div class="container">
@@ -58,11 +64,18 @@ style="width:120px;height:80px;object-fit:cover;border-radius:8px;margin:10px 0;
 <option value="550" title="ca. 2 Stunden + mehr Bilder + Nachbearbeitung">Fotograf Premium – ab CHF 550 *</option>
 </select>
 
-<label><b>4. Videograf (optional)</b></label>
+<label><b>4. Versteckte Videoaufnahme (optional)</b></label>
 <select id="v">
 <option value="0">Kein Video</option>
-<option value="600" title="Highlight Video inkl. versteckte Aufnahme">Video Basic – ab CHF 600 *</option>
-<option value="900" title="Professionelles Video + Schnitt + Musik">Video Premium – ab CHF 900 *</option>
+<option value="600" title="Diskrete Aufnahme des Antrags (ca. 1–2h)">Versteckte Aufnahme Basic – ab CHF 600 *</option>
+<option value="900" title="Professionelles Video inkl. Schnitt & Musik">Versteckte Aufnahme Premium – ab CHF 900 *</option>
+</select>
+
+<label><b>5. Live Saxophonist (optional)</b></label>
+<select id="s">
+<option value="0">Kein Saxophonist</option>
+<option value="300" title="Live Musik während Antrag (ca. 15–30 Minuten)">Saxophonist Basic – ab CHF 300 *</option>
+<option value="500" title="Individuelle Songs & längere Begleitung">Saxophonist Premium – ab CHF 500 *</option>
 </select>
 
 <label><b>5. Express Antrag (optional)</b></label>
@@ -112,18 +125,14 @@ let pVal = Number(document.getElementById("p").value);
 let lVal = Number(document.getElementById("l").value);
 let fVal = Number(document.getElementById("f").value);
 let vVal = Number(document.getElementById("v").value);
+let sVal = Number(document.getElementById("s").value);
 
 // FIX: checkbox must be checked, NOT value
 let express = document.getElementById("e").checked ? 500 : 0;
 
-let total = pVal + lVal + fVal + vVal + express;
+let total = pVal + lVal + fVal + vVal + sVal + express;
 
 document.getElementById('total').innerText = 'Total: ab CHF ' + total;
-}
-
-function updateImage(){
-let img = p.options[p.selectedIndex].getAttribute("data-img");
-document.getElementById("preview").src = img;
 }
 
 function sendMail(){
@@ -168,6 +177,7 @@ Paket: ${p.options[p.selectedIndex].text}
 Lieferung: ${l.options[l.selectedIndex].text}
 Fotograf: ${f.options[f.selectedIndex].text}
 Video: ${v.options[v.selectedIndex].text}
+Saxophonist: ${s.options[s.selectedIndex].text}
 Express: ${expressText}
 ${document.getElementById('total').innerText}`;
 
@@ -183,6 +193,7 @@ Paket: ${p.options[p.selectedIndex].text}%0D%0A
 Lieferung: ${l.options[l.selectedIndex].text}%0D%0A
 Fotograf: ${f.options[f.selectedIndex].text}%0D%0A
 Video: ${v.options[v.selectedIndex].text}%0D%0A
+Saxophonist: ${s.options[s.selectedIndex].text}%0D%0A
 Express: ${expressText}%0D%0A
 ${document.getElementById('total').innerText}`;
 

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ablauf</title>
+<link rel="stylesheet" href="styles.css">
+
+<style>
+.hero-ablauf {
+  height: 50vh;
+  background: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  text-align:center;
+  position:relative;
+}
+
+.hero-ablauf::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.4);
+}
+
+.hero-ablauf h1 {
+  position:relative;
+  z-index:2;
+  font-size:38px;
+}
+
+.timeline {
+  max-width:800px;
+  margin:60px auto;
+  padding:0 20px;
+}
+
+.step {
+  margin-bottom:40px;
+  padding-left:20px;
+  border-left:3px solid #C8A96A;
+}
+
+.step h3 {
+  margin-bottom:10px;
+}
+
+.step span {
+  color:#C8A96A;
+  font-weight:600;
+}
+
+.cta {
+  text-align:center;
+  margin:60px 20px;
+}
+
+</style>
+
+</head>
+<body>
+
+<header class="header">
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="Logo">
+  </a>
+
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="pakete.html">Pakete</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="ablauf.html">Ablauf</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="ueber-uns.html">Über uns</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero-ablauf">
+  <h1>So funktioniert dein Antrag</h1>
+</section>
+
+<!-- TIMELINE -->
+<div class="timeline">
+
+<div class="step">
+  <h3><span>1.</span> Anfrage senden</h3>
+  <p>
+    Du wählst ein Paket und sendest uns deine Anfrage mit deinen Vorstellungen,
+    Datum und Ort.
+  </p>
+</div>
+
+<div class="step">
+  <h3><span>2.</span> Persönliche Planung</h3>
+  <p>
+    Wir melden uns bei dir und planen gemeinsam den perfekten Antrag – abgestimmt
+    auf eure Geschichte und Wünsche.
+  </p>
+</div>
+
+<div class="step">
+  <h3><span>3.</span> Vorbereitung im Hintergrund</h3>
+  <p>
+    Wir organisieren alles diskret: Deko, Location, Aufbau und optionale Services
+    wie Fotograf oder Video.
+  </p>
+</div>
+
+<div class="step">
+  <h3><span>4.</span> Der große Moment</h3>
+  <p>
+    Alles ist vorbereitet. Du musst nur noch den Moment genießen – wir kümmern uns
+    um den Rest im Hintergrund.
+  </p>
+</div>
+
+<div class="step">
+  <h3><span>5.</span> Abbau & Nachbereitung</h3>
+  <p>
+    Nach dem Antrag übernehmen wir den Abbau. Falls gebucht, erhältst du deine
+    Fotos oder Videos im Anschluss.
+  </p>
+</div>
+
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Bereit für deinen perfekten Antrag?</h2>
+  <p>Wir helfen dir, diesen Moment unvergesslich zu machen.</p>
+  <a href="kontakt.html">
+    <button class="btn">Jetzt anfragen</button>
+  </a>
+</div>
+
+<footer style="text-align:center;padding:20px;color:#777;">
+© 2026 JaMoment
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Über uns</title>
+<link rel="stylesheet" href="styles.css">
+
+<style>
+.hero-about {
+  height: 60vh;
+  background: url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  position:relative;
+}
+
+.hero-about::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.4);
+}
+
+.hero-about h1 {
+  position:relative;
+  z-index:2;
+  font-size:40px;
+}
+
+.about-section {
+  max-width:900px;
+  margin:auto;
+  padding:60px 20px;
+}
+
+.about-grid {
+  display:grid;
+  gap:30px;
+}
+
+.about-image {
+  width:100%;
+  border-radius:12px;
+}
+
+.highlight {
+  color:#C8A96A;
+  font-weight:600;
+}
+
+.quote {
+  font-size:20px;
+  text-align:center;
+  margin:40px 0;
+  font-style:italic;
+}
+
+@media(min-width:768px){
+  .about-grid {
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<header class="header">
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="Logo">
+  </a>
+
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="pakete.html">Pakete</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="ablauf.html">Ablauf</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="ueber-uns.html">Über uns</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero-about">
+  <h1>Mehr als nur ein Antrag</h1>
+</section>
+
+<!-- CONTENT -->
+<div class="about-section">
+
+<div class="about-grid">
+  <div>
+    <h2>Unsere Idee</h2>
+    <p>
+      Ein Heiratsantrag ist kein normales Event.  
+      Es ist ein <span class="highlight">Moment, der für immer bleibt</span>.
+    </p>
+    <p>
+      Genau deshalb haben wir JaMoment gegründet – um Menschen dabei zu helfen,
+      diesen Augenblick perfekt zu gestalten, ohne Stress, ohne Unsicherheit.
+    </p>
+  </div>
+
+  <img class="about-image" src="https://images.unsplash.com/photo-1519741497674-611481863552">
+</div>
+
+<div class="quote">
+  „Am Ende zählt nur dieser eine Moment – und dass er perfekt ist.“
+</div>
+
+<div class="about-grid">
+  <img class="about-image" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+
+  <div>
+    <h2>Wie wir arbeiten</h2>
+    <p>
+      Wir planen jeden Antrag individuell – abgestimmt auf dich, deine Geschichte
+      und den Stil, der zu euch passt.
+    </p>
+    <p>
+      Von der Idee bis zur Umsetzung kümmern wir uns um alles im Hintergrund,
+      damit du dich voll und ganz auf den Moment konzentrieren kannst.
+    </p>
+  </div>
+</div>
+
+<div class="about-grid">
+  <div>
+    <h2>Warum JaMoment?</h2>
+    <ul>
+      <li>Diskrete Planung & Umsetzung</li>
+      <li>Hochwertige Dekoration</li>
+      <li>Individuelle Konzepte</li>
+      <li>Schweizweite Verfügbarkeit</li>
+    </ul>
+  </div>
+
+  <img class="about-image" src="https://images.unsplash.com/photo-1521335629791-ce4aec67dd47">
+</div>
+
+</div>
+
+<footer style="text-align:center;padding:20px;color:#777;">
+© 2026 JaMoment
+</footer>
+
+</body>
+</html>
