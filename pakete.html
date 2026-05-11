@@ -4,9 +4,107 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pakete</title>
+
 <link rel="stylesheet" href="styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+
+/* PAGE */
+.package-section{
+  margin-bottom:60px;
+}
+
+.package-section h2{
+  margin-bottom:18px;
+  font-size:28px;
+}
+
+/* NETFLIX STYLE ROW */
+.package-row{
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  padding-bottom:10px;
+}
+
+.package-row::-webkit-scrollbar{
+  height:8px;
+}
+
+.package-row::-webkit-scrollbar-thumb{
+  background:#ddd;
+  border-radius:20px;
+}
+
+/* CARD */
+.package-card{
+  min-width:300px;
+  max-width:300px;
+  background:white;
+  border-radius:18px;
+  overflow:hidden;
+  flex-shrink:0;
+  box-shadow:0 5px 18px rgba(0,0,0,0.08);
+  transition:0.2s;
+}
+
+.package-card:hover{
+  transform:translateY(-3px);
+}
+
+.package-card img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+}
+
+.package-info{
+  padding:18px;
+}
+
+.package-info h3{
+  margin-bottom:10px;
+}
+
+.package-info ul{
+  padding-left:18px;
+  margin:12px 0;
+}
+
+.package-info li{
+  margin-bottom:6px;
+  color:#555;
+}
+
+.price{
+  margin:15px 0;
+  font-size:18px;
+}
+
+.badge{
+  display:inline-block;
+  background:#C8A96A;
+  color:white;
+  padding:5px 12px;
+  border-radius:20px;
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  .package-card{
+    min-width:85%;
+  }
+
+}
+
+</style>
+
 </head>
 <body>
 
@@ -22,99 +120,406 @@
     <a href="ablauf.html">Ablauf</a>
     <a href="kontakt.html">Kontakt</a>
     <a href="ueber-uns.html">Über uns</a>
+<a href="agb.html">AGB</a>
   </nav>
 </header>
 
 <div class="container">
+
 <h1>Unsere Pakete</h1>
-<div class="cards">
 
-<div class="card">
+<!-- HEART ARCH -->
+<section class="package-section">
+
+<h2>Heart Arch</h2>
+
+<div class="package-row">
+
+<div class="package-card">
 <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf">
-<div class="card-content">
-<h3>Zuhause Antrag</h3>
-<ul><li>LED Schriftzug</li><li>Kerzen & Rosen</li><li>Aufbau & Abbau</li></ul>
-<p><b>ab CHF 490</b></p>
-<a href="kontakt.html?paket=490"><button class="btn">Anfragen</button></a>
-</div></div>
 
-<div class="card">
+<div class="package-info">
+
+<span class="badge">Beliebt</span>
+
+<h3>Red Heart Arch</h3>
+
+<ul>
+<li>Roter Blumenbogen</li>
+<li>LED Kerzen</li>
+<li>Romantisches Setup</li>
+</ul>
+
+<p class="price"><b>ab CHF 790</b></p>
+
+<a href="kontakt.html?paket=red-heart">
+<button class="btn">Anfragen</button>
+</a>
+
+</div>
+</div>
+
+<div class="package-card">
 <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed">
-<div class="card-content">
-<h3>Hotel Luxus</h3>
-<ul><li>Premium Deko</li><li>Überraschung</li><li>Optional Fotograf</li></ul>
-<p><b>ab CHF 790</b></p>
-<a href="kontakt.html?paket=790"><button class="btn">Anfragen</button></a>
-</div></div>
 
-<div class="card">
+<div class="package-info">
+
+<h3>White Heart Arch</h3>
+
+<ul>
+<li>Weisser Blumenbogen</li>
+<li>Luxury Setup</li>
+<li>Kerzenweg</li>
+</ul>
+
+<p class="price"><b>ab CHF 890</b></p>
+
+<a href="kontakt.html?paket=white-heart">
+<button class="btn">Anfragen</button>
+</a>
+
+</div>
+</div>
+
+<div class="package-card">
 <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486">
-<div class="card-content">
-<h3>Outdoor Proposal</h3>
-<ul><li>Picknick Setup</li><li>Lichter</li><li>Location Planung</li></ul>
-<p><b>ab CHF 990</b></p>
-<a href="kontakt.html?paket=990"><button class="btn">Anfragen</button></a>
-</div></div>
 
-<div class="card">
+<div class="package-info">
+
+<h3>Pink Heart Arch</h3>
+
+<ul>
+<li>Pink Rosen</li>
+<li>Ballons</li>
+<li>Premium Deko</li>
+</ul>
+
+<p class="price"><b>ab CHF 850</b></p>
+
+<a href="kontakt.html?paket=pink-heart">
+<button class="btn">Anfragen</button>
+</a>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- WISTERIA -->
+<section class="package-section">
+
+<h2>Wisteria</h2>
+
+<div class="package-row">
+
+<div class="package-card">
 <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7">
-<div class="card-content">
-<h3>Rooftop Antrag</h3>
-<ul><li>Exklusive Location</li><li>Kerzen Setup</li><li>Privatsphäre</li></ul>
-<p><b>ab CHF 1290</b></p>
-<a href="kontakt.html?paket=1290"><button class="btn">Anfragen</button></a>
-</div></div>
 
-<div class="card">
+<div class="package-info">
+
+<h3>White Wisteria</h3>
+
+<ul>
+<li>Hängende Blumen</li>
+<li>Kerzen Setup</li>
+<li>Elegante Atmosphäre</li>
+</ul>
+
+<p class="price"><b>ab CHF 990</b></p>
+
+<a href="kontakt.html?paket=white-wisteria">
+<button class="btn">Anfragen</button>
+</a>
+
+</div>
+</div>
+
+<div class="package-card">
 <img src="https://images.unsplash.com/photo-1529636798458-92182e662485">
-<div class="card-content">
-<h3>Luxus Proposal</h3>
-<ul><li>High-End Setup</li><li>Blumenbogen</li><li>Fotograf inkl.</li></ul>
-<p><b>ab CHF 1490</b></p>
-<a href="kontakt.html?paket=1490"><button class="btn">Anfragen</button></a>
-</div></div>
+
+<div class="package-info">
+
+<h3>Pink Wisteria</h3>
+
+<ul>
+<li>Rosa Blumen</li>
+<li>Luxus Dekoration</li>
+<li>Romantischer Stil</li>
+</ul>
+
+<p class="price"><b>ab CHF 1090</b></p>
+
+<a href="kontakt.html?paket=pink-wisteria">
+<button class="btn">Anfragen</button>
+</a>
 
 </div>
 </div>
+
+</div>
+</section>
+
+<!-- MARRY ME LED -->
+<section class="package-section">
+
+<h2>Marry Me LED</h2>
+
+<div class="package-row">
+
+<div class="package-card">
+<img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc">
+
+<div class="package-info">
+
+<h3>Classic LED</h3>
+
+<ul>
+<li>Großer LED Schriftzug</li>
+<li>Kerzen</li>
+<li>Rosen Setup</li>
+</ul>
+
+<p class="price"><b>ab CHF 690</b></p>
+
+<a href="kontakt.html?paket=classic-led">
+<button class="btn">Anfragen</button>
+</a>
+
+</div>
+</div>
+
+<div class="package-card">
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+
+<div class="package-info">
+
+<h3>Luxury LED</h3>
+
+<ul>
+<li>Premium LED</li>
+<li>Luxury Blumen</li>
+<li>Komplett Setup</li>
+</ul>
+
+<p class="price"><b>ab CHF 990</b></p>
+
+<a href="kontakt.html?paket=luxury-led">
+<button class="btn">Anfragen</button>
+</a>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- BIG FLOWERS -->
+<section class="package-section">
+
+<h2>Big Flowers</h2>
+
+<div class="package-row">
+
+<div class="package-card">
+<img src="https://images.unsplash.com/photo-1519741497674-611481863552">
+
+<div class="package-info">
+
+<h3>Red Roses</h3>
+
+<ul>
+<li>Große Rosenwand</li>
+<li>Kerzen</li>
+<li>Luxus Deko</li>
+</ul>
+
+<p class="price"><b>ab CHF 1190</b></p>
+
+<a href="kontakt.html?paket=1190">
+<button class="btn">Anfragen</button>
+</a>
+
+</div>
+</div>
+
+<div class="package-card">
+<img src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2">
+
+<div class="package-info">
+
+<h3>White Flowers</h3>
+
+<ul>
+<li>Weiße Blumenwand</li>
+<li>Premium Setup</li>
+<li>Luxus Atmosphäre</li>
+</ul>
+
+<p class="price"><b>ab CHF 1290</b></p>
+
+<a href="kontakt.html?paket=1290">
+<button class="btn">Anfragen</button>
+</a>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- PICNIC -->
+<section class="package-section">
+
+<h2>Picnic</h2>
+
+<div class="package-row">
+
+<div class="package-card">
+<img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486">
+
+<div class="package-info">
+
+<h3>Sunset Picnic</h3>
+
+<ul>
+<li>Picknick Setup</li>
+<li>Kissen & Teppiche</li>
+<li>Lichter</li>
+</ul>
+
+<p class="price"><b>ab CHF 890</b></p>
+
+<a href="kontakt.html?paket=890">
+<button class="btn">Anfragen</button>
+</a>
+
+</div>
+</div>
+
+<div class="package-card">
+<img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f">
+
+<div class="package-info">
+
+<h3>Luxury Picnic</h3>
+
+<ul>
+<li>Premium Picknick</li>
+<li>Champagner Tisch</li>
+<li>Luxury Dekoration</li>
+</ul>
+
+<p class="price"><b>ab CHF 1190</b></p>
+
+<a href="kontakt.html?paket=1190">
+<button class="btn">Anfragen</button>
+</a>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- FLOATING FLOWERS -->
+<section class="package-section">
+
+<h2>Floating Flowers</h2>
+
+<div class="package-row">
+
+<div class="package-card">
+<img src="https://images.unsplash.com/photo-1521335629791-ce4aec67dd47">
+
+<div class="package-info">
+
+<h3>Floating Roses</h3>
+
+<ul>
+<li>Schwebende Blumen</li>
+<li>Kerzen Setup</li>
+<li>Luxury Atmosphäre</li>
+</ul>
+
+<p class="price"><b>ab CHF 1390</b></p>
+
+<a href="kontakt.html?paket=1390">
+<button class="btn">Anfragen</button>
+</a>
+
+</div>
+</div>
+
+<div class="package-card">
+<img src="https://images.unsplash.com/photo-1519741497674-611481863552">
+
+<div class="package-info">
+
+<h3>Floating Luxury</h3>
+
+<ul>
+<li>Premium Blumen</li>
+<li>High-End Setup</li>
+<li>Exklusiver Stil</li>
+</ul>
+
+<p class="price"><b>ab CHF 1590</b></p>
+
+<a href="kontakt.html?paket=1590">
+<button class="btn">Anfragen</button>
+</a>
+
+</div>
+</div>
+
+</div>
+</section>
+
+</div>
+
 <footer class="footer">
 
-  <div class="footer-grid">
+<div class="footer-grid">
 
-    <div>
-      <h3>JaMoment</h3>
-      <p>Exklusive Heiratsanträge in der Schweiz</p>
-    </div>
+<div>
+<h3>JaMoment</h3>
+<p>Exklusive Heiratsanträge in der Schweiz</p>
+</div>
 
-    <div>
-      <h4>Kontakt</h4>
-      <p>info@jamoment.ch</p>
-      <p>+41 79 000 00 00</p>
-    </div>
+<div>
+<h4>Kontakt</h4>
+<p>info@jamoment.ch</p>
+<p>+41 78 603 03 77</p>
+</div>
 
-    <div>
-      <h4>Standort</h4>
-      <p>Zürich, Schweiz</p>
-      <p>Schweizweit verfügbar</p>
-    </div>
+<div>
+<h4>Standort</h4>
+<p>Zürich, Schweiz</p>
+<p>Schweizweit verfügbar</p>
+</div>
 
-    <div>
-      <h4>Navigation</h4>
-      <p><a href="pakete.html">Pakete</a></p>
-      <p><a href="galerie.html">Galerie</a></p>
-      <p><a href="ablauf.html">Ablauf</a></p>
-      <p><a href="kontakt.html">Kontakt</a></p>
-      <p><a href="ueber-uns.html">Über uns</a></p>
-    </div>
+<div>
+<h4>Navigation</h4>
+<p><a href="pakete.html">Pakete</a></p>
+<p><a href="galerie.html">Galerie</a></p>
+<p><a href="ablauf.html">Ablauf</a></p>
+<p><a href="kontakt.html">Kontakt</a></p>
+<p><a href="ueber-uns.html">Über uns</a></p>
+      <p><a href="agb.html">AGB</a></p>
+</div>
 
-  </div>
+</div>
 
-  <div class="footer-bottom">
-    © 2026 JaMoment
-  </div>
+<div class="footer-bottom">
+© 2026 JaMoment
+</div>
 
 </footer>
+
 <a href="kontakt.html" class="sticky-btn">
-  Anfrage starten
+Anfrage starten
 </a>
+
 </body>
 </html>

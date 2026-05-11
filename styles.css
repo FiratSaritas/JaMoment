@@ -281,3 +281,75 @@ header img:hover {
     grid-template-columns: repeat(4,1fr);
   }
 }
+
+/* CATEGORY */
+.package-category {
+  margin-bottom: 50px;
+}
+
+.package-category h2 {
+  margin-bottom: 15px;
+}
+
+/* HORIZONTAL SCROLL */
+.package-row {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+/* scrollbar clean */
+.package-row::-webkit-scrollbar {
+  height: 8px;
+}
+
+.package-row::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 10px;
+}
+
+/* CARD */
+.package-card {
+  min-width: 280px;
+  max-width: 280px;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.package-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.package-info {
+  padding: 15px;
+}
+
+.package-info ul {
+  padding-left: 18px;
+  margin: 10px 0;
+}
+
+.package-info li {
+  margin-bottom: 5px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  .package-card {
+    min-width: 85%;
+  }
+
+}
+
+.package-card:hover{
+ transform:scale(1.02);
+ transition:0.2s;
+}

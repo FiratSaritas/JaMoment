@@ -22,6 +22,7 @@
     <a href="ablauf.html">Ablauf</a>
     <a href="kontakt.html">Kontakt</a>
     <a href="ueber-uns.html">Über uns</a>
+<a href="agb.html">AGB</a>
   </nav>
 </header>
 
@@ -33,30 +34,88 @@ Wähle zuerst ein <b>Paket</b> als Basis. Danach kannst du optionale Services hi
 Alle Preise sind transparent als <b>„ab Preise“</b> angegeben und können je nach Aufwand variieren.
 </p>
 
-<form oninput="calcTotal(); updateImage();">
+<form oninput="calcTotal(); updatePackage();">
 
 <label><b>1. Paket auswählen (Basis)</b></label>
-<select id="p">
-<option value="490" data-img="https://images.unsplash.com/photo-1520854221256-17451cc331bf">Zuhause Antrag – ab CHF 490</option>
-<option value="790" data-img="https://images.unsplash.com/photo-1519225421980-715cb0215aed">Hotel Antrag – ab CHF 790</option>
-<option value="990" data-img="https://images.unsplash.com/photo-1522673607200-164d1b6ce486">Outdoor Antrag – ab CHF 990</option>
-<option value="1290" data-img="https://images.unsplash.com/photo-1492724441997-5dc865305da7">Rooftop Antrag – ab CHF 1290</option>
-<option value="1490" data-img="https://images.unsplash.com/photo-1529636798458-92182e662485">Luxus Proposal – ab CHF 1490</option>
-<option value="690" data-img="https://images.unsplash.com/photo-1511285560929-80b456fea0bc">Last Minute Antrag – ab CHF 690</option>
+
+<select id="p" onchange="updatePackage(); calcTotal();">
+
+<option
+value="red-heart"
+data-price="790"
+data-title="Red Heart Arch"
+data-img="https://images.unsplash.com/photo-1520854221256-17451cc331bf"
+data-list="Roter Blumenbogen|LED Kerzen|Romantisches Setup">
+Red Heart Arch – ab CHF 790
+</option>
+
+<option
+value="white-heart"
+data-price="890"
+data-title="White Heart Arch"
+data-img="https://images.unsplash.com/photo-1519225421980-715cb0215aed"
+data-list="Weisser Blumenbogen|Luxury Setup|Kerzenweg">
+White Heart Arch – ab CHF 890
+</option>
+
+<option
+value="pink-heart"
+data-price="850"
+data-title="Pink Heart Arch"
+data-img="https://images.unsplash.com/photo-1522673607200-164d1b6ce486"
+data-list="Pink Rosen|Ballons|Premium Deko">
+Pink Heart Arch – ab CHF 850
+</option>
+
+<option
+value="white-wisteria"
+data-price="990"
+data-title="White Wisteria"
+data-img="https://images.unsplash.com/photo-1492724441997-5dc865305da7"
+data-list="Hängende Blumen|Kerzen Setup|Elegante Atmosphäre">
+White Wisteria – ab CHF 990
+</option>
+
+<option
+value="pink-wisteria"
+data-price="1090"
+data-title="Pink Wisteria"
+data-img="https://images.unsplash.com/photo-1529636798458-92182e662485"
+data-list="Rosa Blumen|Luxus Dekoration|Romantischer Stil">
+Pink Wisteria – ab CHF 1090
+</option>
+
+<option
+value="classic-led"
+data-price="690"
+data-title="Classic LED"
+data-img="https://images.unsplash.com/photo-1511285560929-80b456fea0bc"
+data-list="Großer LED Schriftzug|Kerzen|Rosen Setup">
+Classic LED – ab CHF 690
+</option>
+
 </select>
 
 <!-- IMAGE PREVIEW -->
 <div id="packagePreview" style="display:flex;gap:15px;align-items:flex-start;margin:15px 0;">
 
-  <img id="previewImg"
-  src="https://images.unsplash.com/photo-1520854221256-17451cc331bf"
-  style="width:120px;height:100px;object-fit:cover;border-radius:8px;">
+<img id="previewImg"
+src="https://images.unsplash.com/photo-1520854221256-17451cc331bf"
+style="width:130px;height:110px;object-fit:cover;border-radius:10px;">
 
-  <ul id="previewList" style="font-size:14px;margin:0;padding-left:15px;">
-    <li>LED Schriftzug</li>
-    <li>Kerzen & Rosen</li>
-    <li>Aufbau & Abbau</li>
-  </ul>
+<div>
+
+<h3 id="previewTitle" style="margin-bottom:8px;">
+Red Heart Arch
+</h3>
+
+<ul id="previewList" style="font-size:14px;padding-left:18px;margin:0;">
+<li>Roter Blumenbogen</li>
+<li>LED Kerzen</li>
+<li>Romantisches Setup</li>
+</ul>
+
+</div>
 
 </div>
 
@@ -111,9 +170,10 @@ Alle Preise sind transparent als <b>„ab Preise“</b> angegeben und können je
 <div class="total" id="total">Total: ab CHF 490</div>
 
 <p style="font-size:12px;color:#777;">
+Die Anfrage ist unverbindlich.
+<br>
 * Preise sind Richtwerte und können je nach Dauer, Aufwand, Ort oder individuellen Wünschen variieren.
 </p>
-
 
 <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
 <button type="button" class="btn" onclick="sendWhatsApp()">
@@ -131,7 +191,9 @@ Per E-Mail senden
 <script>
 function calcTotal(){
 
-let pVal = Number(document.getElementById("p").value);
+let pVal = Number(
+p.options[p.selectedIndex].getAttribute("data-price")
+);
 let lVal = Number(document.getElementById("l").value);
 let fVal = Number(document.getElementById("f").value);
 let vVal = Number(document.getElementById("v").value);
@@ -145,62 +207,65 @@ let total = pVal + lVal + fVal + vVal + sVal + express;
 document.getElementById('total').innerText = 'Total: ab CHF ' + total;
 }
 
-function sendMail(){
-let body = `Anfrage Heiratsantrag%0D%0A
-Paket: ${p.options[p.selectedIndex].text}%0D%0A
-Lieferung: ${l.options[l.selectedIndex].text}%0D%0A
-Fotograf: ${f.options[f.selectedIndex].text}%0D%0A
-Video: ${v.options[v.selectedIndex].text}%0D%0A
-${document.getElementById('total').innerText}`;
 
-window.location.href = 'mailto:info@jamoment.ch?subject=Anfrage Heiratsantrag&body=' + body;
-}
 
-function updateImage(){
-
-let selected = p.options[p.selectedIndex];
-
-// Bild
-let img = selected.getAttribute("data-img");
-document.getElementById("previewImg").src = img;
-
-// Inhalte
-let lists = {
-  490: ["LED Schriftzug","Kerzen & Rosen","Aufbau & Abbau"],
-  790: ["Premium Deko","Überraschung","Optional Fotograf"],
-  990: ["Picknick Setup","Lichter","Location Planung"],
-  1290: ["Exklusive Location","Kerzen Setup","Privatsphäre"],
-  1490: ["High-End Setup","Blumenbogen","Fotograf inkl."],
-  690: ["Schnelle Umsetzung","Standard Setup","Kurzfristig möglich"]
-};
-
-let val = selected.value;
-let ul = document.getElementById("previewList");
-
-ul.innerHTML = "";
-
-lists[val].forEach(item => {
-  let li = document.createElement("li");
-  li.textContent = item;
-  ul.appendChild(li);
-});
-
-}
 
 // AUTO SELECT PACKAGE FROM URL
 window.onload = function(){
+
 const params = new URLSearchParams(window.location.search);
 const paket = params.get("paket");
 
 if(paket){
+
 for(let i=0;i<p.options.length;i++){
+
 if(p.options[i].value === paket){
+
 p.selectedIndex = i;
-updateImage();
+
+}
+
+}
+
+}
+
+updatePackage();
 calcTotal();
+
 }
-}
-}
+
+function updatePackage(){
+
+let selected = document.getElementById("p").options[
+document.getElementById("p").selectedIndex
+];
+
+// IMAGE
+document.getElementById("previewImg").src =
+selected.getAttribute("data-img");
+
+// TITLE
+document.getElementById("previewTitle").innerText =
+selected.getAttribute("data-title");
+
+// LIST
+let items = selected.getAttribute("data-list").split("|");
+
+let ul = document.getElementById("previewList");
+
+ul.innerHTML = "";
+
+items.forEach(item => {
+
+let li = document.createElement("li");
+
+li.textContent = item;
+
+ul.appendChild(li);
+
+});
+
 }
 
 // WHATSAPP SEND
@@ -235,6 +300,30 @@ ${document.getElementById('total').innerText}`;
 
 window.location.href = 'mailto:info@jamoment.ch?subject=Anfrage Heiratsantrag&body=' + body;
 }
+
+window.onload = function(){
+
+const params = new URLSearchParams(window.location.search);
+const paket = params.get("paket");
+
+if(paket){
+
+for(let i=0;i<p.options.length;i++){
+
+if(p.options[i].value === paket){
+
+p.selectedIndex = i;
+
+}
+
+}
+
+}
+
+updatePackage();
+calcTotal();
+
+}
 </script>
 <footer class="footer">
 
@@ -264,6 +353,7 @@ window.location.href = 'mailto:info@jamoment.ch?subject=Anfrage Heiratsantrag&bo
       <p><a href="ablauf.html">Ablauf</a></p>
       <p><a href="kontakt.html">Kontakt</a></p>
       <p><a href="ueber-uns.html">Über uns</a></p>
+      <p><a href="agb.html">AGB</a></p>
     </div>
 
   </div>
